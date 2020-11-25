@@ -5,5 +5,9 @@ class Cliente {
     String cpfCliente;
     String enderecoCliente;
     static constraints = {
+
+    }
+    String toString(){
+        this.nomeCliente
     }
 }

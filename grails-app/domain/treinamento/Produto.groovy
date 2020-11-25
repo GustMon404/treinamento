@@ -6,5 +6,9 @@ class Produto {
     String descricaoProduto;
 
     static constraints = {
+        
+    }
+    String toString(){
+        def a = [this.nomeProduto, this.precoProduto]
     }
 }
