@@ -2,7 +2,7 @@ package treinamento
 
 class Produto {
     String nomeProduto;
-    Float precoProduto;
+    Double precoProduto;
     String descricaoProduto;
 
     static constraints = {
