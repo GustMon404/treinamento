@@ -2,12 +2,11 @@ package treinamento
 
 class Vendas {
     Date data;
-    Date data_confirmacao;
-    Date cancelamento;
-    /*Item itens = []*/
-    String situacao
+    Date dataConfirmacao;
+    Date dataCancelamento;
 
+    Cliente cliente;
+    /*Item itens = []*/
     static constraints = {
-        situacao inList:["Cadastrada", "Cancelada", "Confirmada"]
     }
 }
