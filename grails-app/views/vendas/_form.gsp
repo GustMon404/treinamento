@@ -20,21 +20,3 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: vendasInstance, field: 'dataCancelamento', 'error')} required">
-	<label for="dataCancelamento">
-		<g:message code="vendas.dataCancelamento.label" default="Data Cancelamento" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dataCancelamento" precision="day"  value="${vendasInstance?.dataCancelamento}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: vendasInstance, field: 'dataConfirmacao', 'error')} required">
-	<label for="dataConfirmacao">
-		<g:message code="vendas.dataConfirmacao.label" default="Data Confirmacao" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="dataConfirmacao" precision="day"  value="${vendasInstance?.dataConfirmacao}"  />
-
-</div>
-

@@ -2,9 +2,9 @@ package treinamento
 
 class Vendas {
     Date data;
-    Date dataConfirmacao;
-    Date dataCancelamento;
-    String situacao = "Cadastrada";
+    private Date dataConfirmacao;
+    private Date dataCancelamento;
+    private String situacao = "Cadastrada";
     Cliente cliente;
 
     def confirmar(){

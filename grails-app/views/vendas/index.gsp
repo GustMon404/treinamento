@@ -28,10 +28,6 @@
 					
 						<g:sortableColumn property="data" title="${message(code: 'vendas.data.label', default: 'Data')}" />
 					
-						<g:sortableColumn property="dataCancelamento" title="${message(code: 'vendas.dataCancelamento.label', default: 'Data Cancelamento')}" />
-					
-						<g:sortableColumn property="dataConfirmacao" title="${message(code: 'vendas.dataConfirmacao.label', default: 'Data Confirmacao')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,10 +37,6 @@
 						<td><g:link action="show" id="${vendasInstance.id}">${fieldValue(bean: vendasInstance, field: "cliente")}</g:link></td>
 					
 						<td><g:formatDate date="${vendasInstance.data}" /></td>
-					
-						<td><g:formatDate date="${vendasInstance.dataCancelamento}" /></td>
-					
-						<td><g:formatDate date="${vendasInstance.dataConfirmacao}" /></td>
 					
 					</tr>
 				</g:each>

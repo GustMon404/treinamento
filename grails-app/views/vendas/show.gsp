@@ -41,24 +41,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${vendasInstance?.dataCancelamento}">
-				<li class="fieldcontain">
-					<span id="dataCancelamento-label" class="property-label"><g:message code="vendas.dataCancelamento.label" default="Data Cancelamento" /></span>
-					
-						<span class="property-value" aria-labelledby="dataCancelamento-label"><g:formatDate date="${vendasInstance?.dataCancelamento}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${vendasInstance?.dataConfirmacao}">
-				<li class="fieldcontain">
-					<span id="dataConfirmacao-label" class="property-label"><g:message code="vendas.dataConfirmacao.label" default="Data Confirmacao" /></span>
-					
-						<span class="property-value" aria-labelledby="dataConfirmacao-label"><g:formatDate date="${vendasInstance?.dataConfirmacao}" /></span>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form url="[resource:vendasInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
