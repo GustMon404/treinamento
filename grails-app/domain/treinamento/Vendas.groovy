@@ -19,4 +19,9 @@ class Vendas {
 
     static constraints = {
     }
+
+    static mapping = {
+        table 'G2_Vendas'
+        id generator: "increment"
+    }
 }

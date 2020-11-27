@@ -11,4 +11,9 @@ class Produto {
     String toString(){
         def a = [this.nomeProduto, this.precoProduto]
     }
+
+    static mapping = {
+        table 'G2_Produto'
+        id generator: "increment"    
+    }
 }

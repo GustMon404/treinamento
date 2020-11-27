@@ -1,9 +1,7 @@
 dataSource {
     pooled = true
     jmxExport = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
+    driverClassName = "oracle.jdbc.OracleDriver"
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -12,14 +10,29 @@ hibernate {
     cache.region.factory_class = 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory' // Hibernate 4
     singleSession = true // configure OSIV singleSession mode
     flush.mode = 'manual' // OSIV session flush mode outside of transactional context
+    // jdbc.use_get_generated_keys = true
 }
 
 // environment specific settings
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:oracle:thin:@to1.tre-to.jus.br:1521:dese"
+            logSql = true
+            formatSql = true
+            username = "ADMTREINAMENTO"
+            password = "ADMTREINAMENTO2020"
+            properties {
+                maxActive = -1
+                minEvictableIdleTimeMillis=1800000
+                timeBetweenEvictionRunsMillis=1800000
+                numTestsPerEvictionRun=3
+                testOnBorrow=true
+                testWhileIdle=true
+                testOnReturn=true
+
+            }
         }
     }
     test {
@@ -50,7 +63,7 @@ environments {
                testWhileIdle = true
                testOnReturn = false
                jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
+               defaultTransactionIsolation = java.sql.Connection.TRA
             }
         }
     }
