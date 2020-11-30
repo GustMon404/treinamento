@@ -20,6 +20,5 @@ i1.save()
 def i2 = new Item( quantidade: 2, produto: p2, venda: v)
 i2.save()*/
 
-def ve = Vendas.get(1)
+def ve = Vendas.get(2)
 def sa =Item.findAllByVenda(ve)
-sa.size()

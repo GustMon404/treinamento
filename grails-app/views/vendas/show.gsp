@@ -71,10 +71,16 @@
 							<td><g:link controller="Item" action="edit" id="${itemInstance.id}">${itemInstance.produto.nomeProduto}</g:link></td>
 							<td>${itemInstance.quantidade}</td>
 							<td>${itemInstance.produto.precoProduto}</td>
-							<td>${itemInstance.produto.precoProduto * itemInstance.quantidade}</td>
+							<td>${itemInstance.totalItem()}</td>
 						</tr>
 						</g:each>
+						
 					</tbody>
+				</table>
+				<table>
+					<tr>
+						<td><h1>Preço total da venda: ${totalVenda}</h1></td>
+					</tr>	
 				</table>
 
 			

@@ -19,7 +19,12 @@ class VendasController {
     }
 
     def show(Vendas vendasInstance) {
-        respond vendasInstance, model:[itemInstanceCount: Item.findAllByVenda(vendasInstance)]
+        def itens = Item.findAllByVenda(vendasInstance)
+        Double total = 0
+        for(item in itens){
+            total += item.quantidade * item.produto.precoProduto;
+        }
+        respond vendasInstance, model:[itemInstanceCount: itens, totalVenda: total]
     }
 
     def create() {
@@ -103,10 +108,6 @@ class VendasController {
         //vendasInstance.save flush: true;
 
         redirect vendasInstance
-    }
-    
-    def precoTotal(){
-        return "qualquer"
     }
 
     protected void notFound() {

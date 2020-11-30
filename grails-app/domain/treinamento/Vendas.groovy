@@ -21,6 +21,10 @@ class Vendas {
         return this.situacao
     }
 
+    String toString(){
+        return this.cliente
+    }
+
     static constraints = {
     }
 
