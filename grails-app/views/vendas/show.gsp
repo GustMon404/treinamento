@@ -71,7 +71,7 @@
 							<td><g:link controller="Item" action="edit" id="${itemInstance.id}">${itemInstance.produto.nomeProduto}</g:link></td>
 							<td>${itemInstance.quantidade}</td>
 							<td>${itemInstance.produto.precoProduto}</td>
-							<td>${itemInstance.produto.precoProduto * itemInstance.produto.precoProduto}</td>
+							<td>${itemInstance.produto.precoProduto * itemInstance.quantidade}</td>
 						</tr>
 						</g:each>
 					</tbody>
@@ -83,7 +83,6 @@
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${vendasInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<g:actionSubmit action="confirmar" value="${message(code: 'Confirmar', default: 'Confirmar')}"/>
 				</fieldset>
 			</g:form>
 		</div>

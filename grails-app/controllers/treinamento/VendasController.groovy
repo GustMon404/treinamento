@@ -104,6 +104,10 @@ class VendasController {
 
         redirect vendasInstance
     }
+    
+    def precoTotal(){
+        return "qualquer"
+    }
 
     protected void notFound() {
         request.withFormat {

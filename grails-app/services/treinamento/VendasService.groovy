@@ -11,8 +11,13 @@ class VendasService {
 
     def confirmar(vendaInstance){
         //vendaInstance.confirmar()
-        def v = Vendas.get(vendaInstance)
+        def v = Vendas.get(vendaInstance.id)
         v.confirmar()
         v.save()
+    }
+    
+    def precoTotal(ItemInstance){
+
+
     }
 }
