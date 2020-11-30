@@ -41,11 +41,20 @@
 				</li>
 				</g:if>
 
-				<g:if test="${vendasInstance?.dataConfirmacao}">
+				<g:if test="${vendasInstance?.situacao == "Confirmada"}">
 				<li class="fieldcontain">
 					<span id="dataConfirmacao-label" class="property-label"><g:message code="vendas.dataConfirmacao.label" default="Data Confirmacao" /></span>
 					
 						<span class="property-value" aria-labelledby="dataConfrimacao-label"><g:formatDate date="${vendasInstance?.dataConfirmacao}" /></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${vendasInstance?.situacao == "Cancelada"}">
+				<li class="fieldcontain">
+					<span id="dataCancelamento-label" class="property-label"><g:message code="vendas.dataCancelamento.label" default="Data Cancelamento" /></span>
+					
+						<span class="property-value" aria-labelledby="dataCancelamento-label"><g:formatDate date="${vendasInstance?.dataCancelamento}" /></span>
 					
 				</li>
 				</g:if>
@@ -62,6 +71,7 @@
 							<th>Quantidade</th>
 							<th>Preco</th>
 							<th>Total</th>
+							<th></th>
 						</tr>
 					</thead>
 
@@ -72,12 +82,24 @@
 							<td>${itemInstance.quantidade}</td>
 							<td>${itemInstance.produto.precoProduto}</td>
 							<td>${itemInstance.totalItem()}</td>
+
+							<td>
+								<g:form url="[resource:itemInstance, action:'delete']" method="DELETE">
+									<fieldset>
+										<g:actionSubmit action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+									</fieldset>
+								</g:form>
+							</td>
+							
 						</tr>
 						</g:each>
 						
 					</tbody>
 				</table>
 				<table>
+					<tr>
+						<td><g:link controller="Item" action="create">Inserir</g:link></td>
+					</tr>
 					<tr>
 						<td><h1>Preço total da venda: ${totalVenda}</h1></td>
 					</tr>	
@@ -89,6 +111,17 @@
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${vendasInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</fieldset>
+			</g:form>
+			<g:form url="[resource:vendasInstance, action:'confirmar']" method="PUT">
+				<fieldset class="buttons">
+					<g:actionSubmit action="confirmar" value="${message(code: 'Confirmar', default: 'Confirmar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				</fieldset>
+			</g:form>
+
+			<g:form url="[resource:vendasInstance, action:'cancelar']" method="PUT">
+				<fieldset class="buttons">
+					<g:actionSubmit action="cancelar" value="${message(code: 'Cancelar', default: 'Cancelar')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>

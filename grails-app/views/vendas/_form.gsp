@@ -19,4 +19,3 @@
 	<g:datePicker name="data" precision="day"  value="${vendasInstance?.data}"  />
 
 </div>
-

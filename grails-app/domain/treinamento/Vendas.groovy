@@ -2,8 +2,8 @@ package treinamento
 
 class Vendas {
     Date data;
-    Date dataConfirmacao;
-    Date dataCancelamento;
+    Date dataConfirmacao = new Date();
+    Date dataCancelamento = new Date();
     String situacao = "Cadastrada";
     Cliente cliente;
 

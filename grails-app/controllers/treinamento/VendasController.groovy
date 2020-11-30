@@ -13,9 +13,17 @@ class VendasController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+    def index(Integer max, String situacao, String cliente, Date data) {
         params.max = Math.min(max ?: 10, 100)
-        respond Vendas.list(params), model:[vendasInstanceCount: Vendas.count()]
+        if (situacao){
+            respond vendasService.buscarSituacao(situacao), model: [vendasInstanceCount: Vendas.count()]
+        }
+        else if(cliente){
+            respond vendasService.buscarCliente(cliente), model: [vendasInstanceCount: Vendas.count()]
+        }
+        else{
+            respond Vendas.list(params), model:[vendasInstanceCount: Vendas.count()]
+        }
     }
 
     def show(Vendas vendasInstance) {
@@ -102,11 +110,13 @@ class VendasController {
 
     @Transactional
     def confirmar(Vendas vendasInstance){ 
-
-        vendasService.confirmar(vendasInstance.id);
-        //vendasInstance.confirmar();
-        //vendasInstance.save flush: true;
-
+        vendasService.confirmar(vendasInstance)
+        redirect vendasInstance
+    }
+    
+    @Transactional
+    def cancelar(Vendas vendasInstance){
+        vendasService.cancelar(vendasInstance)
         redirect vendasInstance
     }
 
