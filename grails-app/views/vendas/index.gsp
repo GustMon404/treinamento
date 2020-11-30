@@ -1,5 +1,6 @@
 
 <%@ page import="treinamento.Vendas" %>
+<%@ page import="treinamento.Item" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,6 +28,10 @@
 						<th><g:message code="vendas.cliente.label" default="Cliente" /></th>
 					
 						<g:sortableColumn property="data" title="${message(code: 'vendas.data.label', default: 'Data')}" />
+
+						<th>Itens</th>
+
+						<th>Situacao</th>
 					
 					</tr>
 				</thead>
@@ -37,6 +42,10 @@
 						<td><g:link action="show" id="${vendasInstance.id}">${fieldValue(bean: vendasInstance, field: "cliente")}</g:link></td>
 					
 						<td><g:formatDate date="${vendasInstance.data}" /></td>
+
+						<td>${Item.findAllByVenda(vendasInstance).size()}</td>
+
+						<td>${vendasInstance.setSituacao()}</td>
 					
 					</tr>
 				</g:each>

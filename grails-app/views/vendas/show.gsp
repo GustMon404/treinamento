@@ -40,12 +40,50 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${vendasInstance?.dataConfirmacao}">
+				<li class="fieldcontain">
+					<span id="dataConfirmacao-label" class="property-label"><g:message code="vendas.dataConfirmacao.label" default="Data Confirmacao" /></span>
+					
+						<span class="property-value" aria-labelledby="dataConfrimacao-label"><g:formatDate date="${vendasInstance?.dataConfirmacao}" /></span>
+					
+				</li>
+				</g:if>
+
+				<li class="fieldcontain">
+					<span id="situacao-label" class="property-label"><g:message code="Situacao"/></span>
+					
+						<span class="property-value" aria-labelledby="situacao-label">${vendasInstance?.setSituacao()}</span>
+				</li>
+				<table>
+					<thead>
+						<tr>
+							<th>Produto</th>
+							<th>Quantidade</th>
+							<th>Preco</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<g:each in="${itemInstanceCount}" status="i" var="itemInstance">
+						<tr>
+							<td><g:link controller="Item" action="edit" id="${itemInstance.id}">${itemInstance.produto.nomeProduto}</g:link></td>
+							<td>${itemInstance.quantidade}</td>
+							<td>${itemInstance.produto.precoProduto}</td>
+							<td>${itemInstance.produto.precoProduto * itemInstance.produto.precoProduto}</td>
+						</tr>
+						</g:each>
+					</tbody>
+				</table>
+
 			
 			</ol>
 			<g:form url="[resource:vendasInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${vendasInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit action="confirmar" value="${message(code: 'Confirmar', default: 'Confirmar')}"/>
 				</fieldset>
 			</g:form>
 		</div>

@@ -17,6 +17,10 @@ class Vendas {
         this.dataCancelamento = new Date()
     }
 
+    def setSituacao(){
+        return this.situacao
+    }
+
     static constraints = {
     }
 

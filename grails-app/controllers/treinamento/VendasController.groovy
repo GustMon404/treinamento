@@ -5,8 +5,11 @@ package treinamento
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+
 @Transactional(readOnly = true)
 class VendasController {
+
+    VendasService vendasService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -16,7 +19,7 @@ class VendasController {
     }
 
     def show(Vendas vendasInstance) {
-        respond vendasInstance
+        respond vendasInstance, model:[itemInstanceCount: Item.findAllByVenda(vendasInstance)]
     }
 
     def create() {
@@ -90,6 +93,16 @@ class VendasController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+
+    @Transactional
+    def confirmar(Vendas vendasInstance){ 
+
+        vendasService.confirmar(vendasInstance.id);
+        //vendasInstance.confirmar();
+        //vendasInstance.save flush: true;
+
+        redirect vendasInstance
     }
 
     protected void notFound() {
